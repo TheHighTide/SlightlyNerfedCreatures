@@ -9,8 +9,10 @@ namespace HighTide.Modding.SN.SlightlyNerfedCreatures.Patches
         [HarmonyPostfix]
         private static void Start_Postfix(LiveMixin __instance)
         {
-            __instance.data.maxHealth = 1;
-            __instance.health = 1;
+            if (!__instance.player) {
+                __instance.data.maxHealth = 1;
+                __instance.health = 1;
+            }
         }
     }
 }
